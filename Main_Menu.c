@@ -52,9 +52,32 @@ int main() {
                 }
                 break;
             }
-            case 2:
-                printf("\n--- Chuc nang 2 dang duoc phat trien ---\n\n");
+            case 2: {
+                int x;
+                bool laSoNguyenTo = true;
+
+                printf("\n--- CHUC NANG 2: KIEM TRA SO NGUYEN TO ---\n");
+                printf("Nhap vao so nguyen x: ");
+                scanf("%d", &x);
+
+                if (x < 2) {
+                    laSoNguyenTo = false;
+                } else {
+                    for (int i = 2; i * i <= x; i++) {
+                        if (x % i == 0) {
+                            laSoNguyenTo = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (laSoNguyenTo) {
+                    printf("%d la so nguyen to.\n\n", x);
+                } else {
+                    printf("%d khong phai la so nguyen to.\n\n", x);
+                }
                 break;
+            }
             case 3:
                 printf("\n--- Chuc nang 3 dang duoc phat trien ---\n\n");
                 break;
