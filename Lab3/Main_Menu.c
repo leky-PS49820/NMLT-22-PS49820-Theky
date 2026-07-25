@@ -99,7 +99,7 @@ void tinhTienDien() {
             tongTien = 50 * 1678 + 50 * 1734 + 100 * 2014 + 100 * 2536 + 100 * 2834 + (kWh - 400) * 2927;
         }
 
-        printf("Tong so tien dien phai trả la: %.0f VNĐ\n", tongTien);
+        printf("Tong so tien dien phai trả la: %.0f VND\n", tongTien);
     }
 }
 
