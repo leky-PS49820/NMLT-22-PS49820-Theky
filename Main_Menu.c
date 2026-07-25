@@ -78,9 +78,30 @@ int main() {
                 }
                 break;
             }
-            case 3:
-                printf("\n--- Chuc nang 3 dang duoc phat trien ---\n\n");
+            case 3: {
+                int x;
+                bool laSoChinhPhuong = false;
+
+                printf("\n--- CHUC NANG 3: KIEM TRA SO CHINH PHUONG ---\n");
+                printf("Nhap vao so nguyen x: ");
+                scanf("%d", &x);
+
+                if (x > 0) {
+                    for (int i = 1; i <= x; i++) {
+                        if (i * i == x) {
+                            laSoChinhPhuong = true;
+                            break; // Thoat vong lap som khi da tim thay
+                        }
+                    }
+                }
+
+                if (laSoChinhPhuong) {
+                    printf("%d la so chinh phuong.\n\n", x);
+                } else {
+                    printf("%d khong phai la so chinh phuong.\n\n", x);
+                }
                 break;
+            }
             case 4:
                 printf("\nCam on ban da su dung chuong trinh. Tam biet!\n");
                 break;
