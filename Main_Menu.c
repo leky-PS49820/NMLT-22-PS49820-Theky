@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include <math.h>
 
-// Khai báo hàm cho Chức năng 1
+// CHỨC NĂNG 1: Tính học lực sinh viên
 void tinhHocLuc() {
     float diem;
 
@@ -8,11 +9,9 @@ void tinhHocLuc() {
     printf("Nhap diem so cua sinh vien (0.0 - 10.0): ");
     scanf("%f", &diem);
 
-    // Bắt lỗi đầu vào ngoài phạm vi 0.0 - 10.0
     if (diem < 0.0 || diem > 10.0) {
         printf("Diem so nhap vao khong hop le!\n");
     } else {
-        // Phân loại học lực bằng cấu trúc if-else bậc thang
         if (diem >= 9.0) {
             printf("Hoc luc: Xuat sac\n");
         } else if (diem >= 8.0) {
@@ -29,10 +28,84 @@ void tinhHocLuc() {
     }
 }
 
+// CHỨC NĂNG 2: Giải phương trình bậc hai tổng quát
+void giaiPTBacHai() {
+    float a, b, c;
+
+    printf("\n--- CHUC NANG 2: GIAI PHUONG TRINH BAC HAI ---\n");
+    printf("Nhap he so a: ");
+    scanf("%f", &a);
+    printf("Nhap he so b: ");
+    scanf("%f", &b);
+    printf("Nhap he so c: ");
+    scanf("%f", &c);
+
+    // TRƯỜNG HỢP 1: a == 0 (Phương trình bậc nhất bx + c = 0)
+    if (a == 0) {
+        if (b == 0) {
+            if (c == 0) {
+                printf("Phuong trinh co vo so nghiem.\n");
+            } else {
+                printf("Phuong trinh vo nghiem.\n");
+            }
+        } else {
+            float x = -c / b;
+            printf("Phuong trinh tro thanh bac nhat, co nghiem duy nhat x = %.2f\n", x);
+        }
+    } 
+    // TRƯỜNG HỢP 2: a != 0 (Phương trình bậc hai ax^2 + bx + c = 0)
+    else {
+        float delta = b * b - 4 * a * c;
+
+        if (delta < 0) {
+            printf("Phuong trinh vo nghiem (Delta < 0).\n");
+        } else if (delta == 0) {
+            float x = -b / (2 * a);
+            printf("Phuong trinh co nghiem kep x = %.2f\n", x);
+        } else {
+            float x1 = (-b + sqrt(delta)) / (2 * a);
+            float x2 = (-b - sqrt(delta)) / (2 * a);
+            printf("Phuong trinh co 2 nghiem phan biet:\n");
+            printf("  x1 = %.2f\n", x1);
+            printf("  x2 = %.2f\n", x2);
+        }
+    }
+}
+
+// CHỨC NĂNG 3: Tính tiền điện lũy tiến
+void tinhTienDien() {
+    float kWh;
+    double tongTien = 0;
+
+    printf("\n--- CHUC NANG 3: TINH TIEN DIEN TIEU THU HANG THANG ---\n");
+    printf("Nhap tong so kWh dien tieu thu trong thang: ");
+    scanf("%f", &kWh);
+
+    if (kWh < 0) {
+        printf("So kWh dien phai la so duong (>= 0)!\n");
+    } else {
+        // Tính tiền theo từng bậc lũy tiến
+        if (kWh <= 50) {
+            tongTien = kWh * 1678;
+        } else if (kWh <= 100) {
+            tongTien = 50 * 1678 + (kWh - 50) * 1734;
+        } else if (kWh <= 200) {
+            tongTien = 50 * 1678 + 50 * 1734 + (kWh - 100) * 2014;
+        } else if (kWh <= 300) {
+            tongTien = 50 * 1678 + 50 * 1734 + 100 * 2014 + (kWh - 200) * 2536;
+        } else if (kWh <= 400) {
+            tongTien = 50 * 1678 + 50 * 1734 + 100 * 2014 + 100 * 2536 + (kWh - 300) * 2834;
+        } else {
+            tongTien = 50 * 1678 + 50 * 1734 + 100 * 2014 + 100 * 2536 + 100 * 2834 + (kWh - 400) * 2927;
+        }
+
+        printf("Tong so tien dien phai trả la: %.0f VNĐ\n", tongTien);
+    }
+}
+
 int main() {
     int luachon;
 
-    // Hiển thị khung Menu
     printf("+---------------------------------------------------+\n");
     printf("|              MENU CHUONG TRINH LAB 3              |\n");
     printf("+---------------------------------------------------+\n");
@@ -44,16 +117,15 @@ int main() {
     printf(">> Chon chuc nang cua ban (1-4): ");
     scanf("%d", &luachon);
 
-    // Điều khiển các chức năng bằng switch-case
     switch (luachon) {
         case 1:
             tinhHocLuc();
             break;
         case 2:
-            printf("\nChuc nang 2 dang duoc phat triển...\n");
+            giaiPTBacHai();
             break;
         case 3:
-            printf("\nChuc nang 3 dang duoc phat triển...\n");
+            tinhTienDien();
             break;
         case 4:
             printf("\nDa thoat chuong trinh!\n");
