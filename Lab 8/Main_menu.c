@@ -66,3 +66,35 @@ void menu() {
     printf("| 5. Thoat chuong trinh                             |\n");
     printf("+---------------------------------------------------+\n");
 }
+// Chuc nang 1: Nhap va Xuat sinh vien
+void nhapXuatSinhVien(struct SinhVien mangSV[], int *n) {
+    printf("\n--- CHUC NANG 1: NHAP VA XUAT DANH SACH SINH VIEN ---\n");
+    printf("Nhap so luong sinh vien: ");
+    scanf("%d", n);
+    getchar(); // Xoa bo nho dem ky tu xuong dong
+
+    for (int i = 0; i < *n; i++) {
+        printf("\n---> Nhap thong tin sinh vien thu %d:\n", i + 1);
+        printf("MSSV: ");
+        gets(mangSV[i].mssv);
+
+        printf("Ho va Ten: ");
+        gets(mangSV[i].tenSV);
+
+        printf("Nganh hoc: ");
+        gets(mangSV[i].nganhHoc);
+
+        printf("Diem trung binh: ");
+        scanf("%f", &mangSV[i].diemTB);
+        getchar(); // Xoa ky tu xuong dong sau khi nhap diem
+    }
+
+    // Xuat danh sach
+    printf("\n================ DANH SACH SINH VIEN ================\n");
+    printf("%-12s | %-20s | %-15s | %-8s\n", "MSSV", "Ho va Ten", "Nganh Hoc", "Diem TB");
+    printf("-----------------------------------------------------\n");
+    for (int i = 0; i < *n; i++) {
+        printf("%-12s | %-20s | %-15s | %-8.2f\n", 
+               mangSV[i].mssv, mangSV[i].tenSV, mangSV[i].nganhHoc, mangSV[i].diemTB);
+    }
+}
