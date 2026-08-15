@@ -155,3 +155,27 @@ void timKiemSinhVien(struct SinhVien mangSV[], int n) {
         printf("\nKhong tim thay sinh vien co MSSV: %s!\n", mssvTim);
     }
 }
+// Chuc nang 4: Xuat danh sach Dat Hoc Bong (Diem TB >= 8.0)
+void xuatHocBong(struct SinhVien mangSV[], int n) {
+    if (n == 0) {
+        printf("\nDanh sach rong! Vui long nhap sinh vien o Chuc nang 1 truoc.\n");
+        return;
+    }
+
+    printf("\n--- CHUC NANG 4: DANH SACH SINH VIEN DAT HOC BONG (>= 8.0) ---\n");
+    int count = 0;
+    printf("%-12s | %-20s | %-15s | %-8s\n", "MSSV", "Ho va Ten", "Nganh Hoc", "Diem TB");
+    printf("-----------------------------------------------------\n");
+
+    for (int i = 0; i < n; i++) {
+        if (mangSV[i].diemTB >= 8.0) {
+            printf("%-12s | %-20s | %-15s | %-8.2f\n", 
+                   mangSV[i].mssv, mangSV[i].tenSV, mangSV[i].nganhHoc, mangSV[i].diemTB);
+            count++;
+        }
+    }
+
+    if (count == 0) {
+        printf("Khong co sinh vien nao dat hoc bong (Diem TB >= 8.0).\n");
+    }
+}
