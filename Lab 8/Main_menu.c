@@ -98,3 +98,30 @@ void nhapXuatSinhVien(struct SinhVien mangSV[], int *n) {
                mangSV[i].mssv, mangSV[i].tenSV, mangSV[i].nganhHoc, mangSV[i].diemTB);
     }
 }
+// Chuc nang 2: Sap xep theo diem TB tang dan
+void sapXepSinhVien(struct SinhVien mangSV[], int n) {
+    if (n == 0) {
+        printf("\nDanh sach rong! Vui long nhap sinh vien o Chuc nang 1 truoc.\n");
+        return;
+    }
+
+    printf("\n--- CHUC NANG 2: SAP XEP SINH VIEN THEO DIEM TB TANG DAN ---\n");
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (mangSV[i].diemTB > mangSV[j].diemTB) {
+                // Hoan vi 2 struct
+                struct SinhVien temp = mangSV[i];
+                mangSV[i] = mangSV[j];
+                mangSV[j] = temp;
+            }
+        }
+    }
+
+    printf("\n=== DANH SACH SAU KHI SAP XEP TANG DAN THEO DIEM ===\n");
+    printf("%-12s | %-20s | %-15s | %-8s\n", "MSSV", "Ho va Ten", "Nganh Hoc", "Diem TB");
+    printf("-----------------------------------------------------\n");
+    for (int i = 0; i < n; i++) {
+        printf("%-12s | %-20s | %-15s | %-8.2f\n", 
+               mangSV[i].mssv, mangSV[i].tenSV, mangSV[i].nganhHoc, mangSV[i].diemTB);
+    }
+}
