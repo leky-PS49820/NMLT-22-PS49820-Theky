@@ -125,3 +125,33 @@ void sapXepSinhVien(struct SinhVien mangSV[], int n) {
                mangSV[i].mssv, mangSV[i].tenSV, mangSV[i].nganhHoc, mangSV[i].diemTB);
     }
 }
+// Chuc nang 3: Tim kiem theo MSSV
+void timKiemSinhVien(struct SinhVien mangSV[], int n) {
+    if (n == 0) {
+        printf("\nDanh sach rong! Vui long nhap sinh vien o Chuc nang 1 truoc.\n");
+        return;
+    }
+
+    char mssvTim[50];
+    getchar(); // Xoa bộ nho dem
+    printf("\n--- CHUC NANG 3: TIM KIEM SINH VIEN THEO MSSV ---\n");
+    printf("Nhap MSSV can tim: ");
+    gets(mssvTim);
+
+    int found = 0;
+    for (int i = 0; i < n; i++) {
+        if (strcmp(mangSV[i].mssv, mssvTim) == 0) {
+            printf("\n--> DA TIM THAY SINH VIEN:\n");
+            printf("MSSV: %s\n", mangSV[i].mssv);
+            printf("Ho va Ten: %s\n", mangSV[i].tenSV);
+            printf("Nganh hoc: %s\n", mangSV[i].nganhHoc);
+            printf("Diem TB: %.2f\n", mangSV[i].diemTB);
+            found = 1;
+            break; // Tim thay roi thi dung
+        }
+    }
+
+    if (found == 0) {
+        printf("\nKhong tim thay sinh vien co MSSV: %s!\n", mssvTim);
+    }
+}
